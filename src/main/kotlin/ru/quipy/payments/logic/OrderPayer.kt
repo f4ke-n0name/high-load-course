@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import ru.quipy.common.utils.CallerBlockingRejectedExecutionHandler
 import ru.quipy.common.utils.NamedThreadFactory
+import ru.quipy.common.utils.SlidingWindowRateLimiter
 import ru.quipy.core.EventSourcingService
 import ru.quipy.payments.api.PaymentAggregate
+import java.time.Duration
 import java.util.*
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
+
 
 @Service
 class OrderPayer {
@@ -36,9 +39,17 @@ class OrderPayer {
         CallerBlockingRejectedExecutionHandler()
     )
 
+    private val rateLimiter = SlidingWindowRateLimiter(
+        rate = 10,
+        window = Duration.ofMillis(1000)
+    )
+
     fun processPayment(orderId: UUID, amount: Int, paymentId: UUID, deadline: Long): Long {
         val createdAt = System.currentTimeMillis()
         paymentExecutor.submit {
+
+            rateLimiter.tickBlocking()
+
             val createdEvent = paymentESService.create {
                 it.create(
                     paymentId,
