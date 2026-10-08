@@ -26,4 +26,6 @@ class PaymentSystemImpl(
             account.performPaymentAsync(paymentId, amount, paymentStartedAt, deadline)
         }
     }
+
+    override fun queueCapacity() = paymentAccounts.sumOf { it.queueCapacity() }
 }
