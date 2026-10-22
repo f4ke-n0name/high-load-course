@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory
 import java.time.Duration
 import java.util.concurrent.Executors
 import java.util.concurrent.PriorityBlockingQueue
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicLong
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
@@ -37,6 +38,22 @@ class SlidingWindowRateLimiter(
         while (!tick()) {
             Thread.sleep(10)
         }
+    }
+
+    fun tickBlocking(timeout: Duration): Boolean {
+        val startedAt = System.nanoTime()
+        val timeoutNanos = timeout.toNanos()
+
+        while (System.nanoTime() - startedAt < timeoutNanos) {
+            if (tick()) return true
+
+            val remainingNanos = timeoutNanos - (System.nanoTime() - startedAt)
+            if (remainingNanos > 0) {
+                TimeUnit.NANOSECONDS.sleep(minOf(remainingNanos, 10_000_000L))
+            }
+        }
+
+        return false
     }
 
     data class Measure(
