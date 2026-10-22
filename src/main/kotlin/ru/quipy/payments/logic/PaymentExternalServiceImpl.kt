@@ -13,6 +13,7 @@ import ru.quipy.payments.api.PaymentAggregate
 import java.net.SocketTimeoutException
 import java.time.Duration
 import java.util.*
+import kotlin.math.ceil
 
 
 // Advice: always treat time as a Duration
@@ -132,8 +133,12 @@ class PaymentExternalSystemAdapterImpl(
 
     override fun name() = properties.accountName
 
-    override fun queueCapacity() = parallelRequests
+    override fun queueCapacity(): Int {
+        val rateLimitedCapacity = ceil(
+            rateLimitPerSec * requestAverageProcessingTime.toMillis() / 1_000.0
+        ).toInt()
+        return minOf(parallelRequests, rateLimitedCapacity).coerceAtLeast(1)
+    }
 
+    private fun now() = System.currentTimeMillis()
 }
-
-public fun now() = System.currentTimeMillis()
