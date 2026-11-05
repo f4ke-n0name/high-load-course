@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 4,
+  "id": 2,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -87,8 +87,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -185,8 +184,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -283,8 +281,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -362,8 +359,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -479,8 +475,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -560,8 +555,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -658,8 +652,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               }
@@ -730,7 +723,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(increase(test_duration_count{service=~\"$service\"}[$__range])) by (service, testOutcome)",
+              "expr": "sum(increase(test_duration_count{job=\"bombardier-docker-network-job\",service=~\"$service\"}[$__range])) by (service, testOutcome)",
               "interval": "",
               "legendFormat": "{{service}} - {{testOutcome}}",
               "range": true,
@@ -792,8 +785,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -924,8 +916,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1040,8 +1031,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1174,8 +1164,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1307,8 +1296,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -1433,8 +1421,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1569,8 +1556,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1707,8 +1693,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1845,8 +1830,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1983,8 +1967,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2155,8 +2138,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2253,8 +2235,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2351,8 +2332,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2463,8 +2443,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2557,8 +2536,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2652,8 +2630,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2766,8 +2743,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2860,8 +2836,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2968,8 +2943,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3070,8 +3044,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3173,8 +3146,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3312,8 +3284,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3412,8 +3383,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3475,323 +3445,1052 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 7
       },
-      "id": 100,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 32
-          },
-          "id": 101,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "payments_external_in_flight",
-              "legendFormat": "in-flight {{account}}",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "payments_external_parallel_limit",
-              "legendFormat": "limit {{account}}",
-              "range": true,
-              "refId": "B"
-            }
-          ],
-          "title": "External Requests: In Flight vs Limit",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "unit": "reqps"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 40
-          },
-          "id": 103,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "sum by (account, result) (rate(payments_external_responses_total[1m]))",
-              "legendFormat": "{{account}} - {{result}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "External Response Results",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 40
-          },
-          "id": 104,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "histogram_quantile(0.95, sum by (le, account) (rate(payments_external_semaphore_wait_seconds_bucket[1m])))",
-              "legendFormat": "p95 semaphore wait {{account}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Semaphore Wait (p95)",
-          "type": "timeseries"
-        }
-      ],
-      "title": "Payment External Limits",
+      "id": 101,
+      "panels": [],
+      "title": "Custom metrics",
       "type": "row"
     },
     {
-      "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Local HTTP calls in progress and account parallelRequests limit. Excludes queue, rate limiter wait and database work. Short spikes may occur between scrapes; see the exceeded counter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    6,
+                    6
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
-        "h": 9,
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 102,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "payments_provider_inflight{job=~\"online-store-job|online-shop-job\",service=~\"$service\",accountName=~\"${account:regex}\"}",
+          "instant": false,
+          "interval": "10s",
+          "legendFormat": "In flight — {{accountName}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "payments_provider_concurrency_limit{job=~\"online-store-job|online-shop-job\",service=~\"$service\",accountName=~\"${account:regex}\"}",
+          "instant": false,
+          "interval": "10s",
+          "legendFormat": "Limit — {{accountName}}",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Provider concurrency vs limit",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Estimated number of starts above the local account concurrency limit during the selected time range. Counter preserves short spikes. Zero is expected with the semaphore.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 0.000001
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 103,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "sum by (service, accountName, instance) (increase(payments_provider_concurrency_exceeded_total{job=~\"online-store-job|online-shop-job\",service=~\"$service\",accountName=~\"${account:regex}\"}[$__range]))",
+          "instant": true,
+          "interval": "10s",
+          "legendFormat": "{{accountName}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Requests started above concurrency limit",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Completed external calls per second: success = result true; failure = result false; error = HTTP, read or parsing exception. These are call outcomes, not unique order counts.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^success — "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^failure — "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^error — "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 104,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "sum by (service, accountName, instance, outcome) (rate(payments_provider_requests_total{job=~\"online-store-job|online-shop-job\",service=~\"$service\",accountName=~\"${account:regex}\"}[$__rate_interval]))",
+          "instant": false,
+          "interval": "10s",
+          "legendFormat": "{{outcome}} — {{accountName}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Provider request outcomes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Rate of calls started while local concurrency exceeds the account limit. Correlate with failure outcomes and provider response messages.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 105,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "sum by (service, accountName, instance) (rate(payments_provider_concurrency_exceeded_total{job=~\"online-store-job|online-shop-job\",service=~\"$service\",accountName=~\"${account:regex}\"}[$__rate_interval]))",
+          "instant": false,
+          "interval": "10s",
+          "legendFormat": "{{accountName}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Starts above concurrency limit per second",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Rejected admission attempts across application instances. This metric has no service or accountName labels, so service and account filters do not apply. Includes client retries.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 106,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "sum (rate(payments_admission_rejected_total{job=~\"online-store-job|online-shop-job\"}[$__rate_interval]))",
+          "instant": false,
+          "interval": "10s",
+          "legendFormat": "Queue rejections",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Payment queue rejections per second",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Rejected admission attempts across application instances. This metric has no service or accountName labels, so service and account filters do not apply. Includes client retries.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 0.000001
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 107,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "sum (increase(payments_admission_rejected_total{job=~\"online-store-job|online-shop-job\"}[$__range]))",
+          "instant": true,
+          "interval": "10s",
+          "legendFormat": "Queue rejections",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Payment queue rejections in selected range",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Входящие, исходящие и обработанные запросы магазина",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 108,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "rate(requests_total[30s])",
+          "legendFormat": "{{event}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Online shop requests",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 109,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "max_over_time(executor_queued_tasks{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}[$__interval])",
+          "interval": "1s",
+          "legendFormat": "{{instance}} sampled queue peak per interval",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "expr": "executor_queued_tasks{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"} + executor_queue_remaining_tasks{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}",
+          "legendFormat": "{{instance}} queue capacity",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "description": "Peak sampled queue size per chart interval. Capacity is inferred from queued and remaining slots.",
+      "title": "Payment queue size",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 110,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "rate(executor_completed_tasks_total{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{instance}} completed tasks/s",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "expr": "rate(requests_total{job=~\"online-store-job|online-shop-job\",event=\"Incoming\"}[$__rate_interval]) and on (job, instance) executor_pool_max_threads{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}",
+          "legendFormat": "{{instance}} incoming attempts/s (incl. retries)",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "expr": "rate(payments_admission_rejected_total{job=~\"online-store-job|online-shop-job\"}[$__rate_interval]) and on (job, instance) executor_pool_max_threads{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}",
+          "legendFormat": "{{instance}} rejected attempts/s (429)",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "description": "Incoming and rejected attempts include retries. Completed tasks may include failed payments.",
+      "title": "Payment submit and processing rates",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 48
       },
-      "id": 500,
-      "panels": [
+      "id": 111,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "fieldConfig": {
-            "defaults": {
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 1
-          },
-          "id": 501,
-          "options": {
-            "legend": {
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "payments_admission_queue_size",
-              "legendFormat": "queue size",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "payments_admission_queue_capacity",
-              "legendFormat": "queue capacity",
-              "range": true,
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "payments_admission_executor_active",
-              "legendFormat": "active executor threads",
-              "range": true,
-              "refId": "C"
-            }
-          ],
-          "title": "Payment Admission Queue",
-          "type": "timeseries"
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "executor_active_threads{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}",
+          "interval": "",
+          "legendFormat": "{{instance}} active threads",
+          "range": true,
+          "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "unit": "ops"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 1
-          },
-          "id": 503,
-          "options": {
-            "legend": {
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "rate(payments_admission_accepted_total[1m])",
-              "legendFormat": "accepted",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "rate(payments_admission_started_total[1m])",
-              "legendFormat": "started / payment RPS",
-              "range": true,
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "rate(payments_admission_rejected_total[1m])",
-              "legendFormat": "rejected / HTTP 429",
-              "range": true,
-              "refId": "B"
-            }
-          ],
-          "title": "Payment Admission Outcomes",
-          "type": "timeseries"
+          "expr": "executor_pool_max_threads{job=~\"online-store-job|online-shop-job\",service=~\"$service\",name=\"payment-submission-executor\"}",
+          "legendFormat": "{{instance}} thread limit",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "Payment Admission",
-      "type": "row"
+      "description": "Busy workers include time waiting for the provider and rate limiter.",
+      "title": "Active payment threads",
+      "type": "timeseries"
     }
   ],
   "preload": false,
   "refresh": "5s",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
@@ -3816,6 +4515,35 @@
         "refresh": 1,
         "regex": "",
         "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(payments_provider_concurrency_limit{job=~\"online-store-job|online-shop-job\",service=~\"$service\"}, accountName)",
+        "includeAll": true,
+        "label": "account",
+        "multi": true,
+        "name": "account",
+        "options": [],
+        "query": {
+          "query": "label_values(payments_provider_concurrency_limit{job=~\"online-store-job|online-shop-job\",service=~\"$service\"}, accountName)",
+          "refId": "AccountVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
@@ -3833,6 +4561,5 @@
   "timezone": "",
   "title": "Services statistic",
   "uid": "KVr-Vmpnz",
-  "version": 4,
-  "weekStart": ""
+  "version": 4
 }

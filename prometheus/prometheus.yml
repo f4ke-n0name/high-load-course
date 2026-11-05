@@ -7,11 +7,9 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['bombardier:1234']
-  - job_name: 'bombardier-host-job'
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-      - targets: ['host.docker.internal:1234']
   - job_name: 'online-store-job'
+    scrape_interval: 1s
+    scrape_timeout: 1s
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['host.docker.internal:8081']
