@@ -68,7 +68,7 @@ class APIController {
 
         val createdAt = orderPayer.processPayment(orderId, order.price, paymentId, deadline)
             ?: return ResponseEntity.status(429)
-                .header("Retry-After", (System.currentTimeMillis() + 1_000).toString())
+                .header("Retry-After", (System.currentTimeMillis() + orderPayer.retryAfterMillis()).toString())
                 .build()
         orderRepository.save(order.copy(status = OrderStatus.PAYMENT_IN_PROGRESS))
         return ResponseEntity.ok(PaymentSubmissionDto(createdAt, paymentId))

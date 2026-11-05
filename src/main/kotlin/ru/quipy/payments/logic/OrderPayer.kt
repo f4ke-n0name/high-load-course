@@ -8,6 +8,7 @@ import io.micrometer.core.instrument.binder.jvm.ExecutorServiceMetrics
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import ru.quipy.common.utils.LeakingBucketRateLimiter
 import ru.quipy.common.utils.NamedThreadFactory
 import ru.quipy.core.EventSourcingService
 import ru.quipy.payments.api.PaymentAggregate
@@ -30,24 +31,27 @@ class OrderPayer(
         val logger: Logger = LoggerFactory.getLogger(OrderPayer::class.java)
     }
 
-    private val processingTimeMs by lazy {
-        paymentAccounts.sumOf { it.averageProcessingTime().toMillis() }.coerceAtLeast(1)
+    private val rateLimitPerSecond = paymentAccounts.minOf { it.throughputPerSec() }
+    private val averageProcessingTimeMs = paymentAccounts.maxOf {
+        it.averageProcessingTime().toMillis()
     }
+    private val rateLimiterWindow = java.time.Duration.ofSeconds(1)
+    private val workersAmount = paymentAccounts.minOf {
+        val throughputCapacity = rateLimitPerSecond * it.averageProcessingTime().toMillis() /
+            rateLimiterWindow.toMillis()
+        minOf(it.parallelRequests().toLong(), throughputCapacity.coerceAtLeast(1L)).toInt()
+    }
+    private val queueCapacity = paymentAccounts.maxOf {
+        val throughputCapacity = rateLimitPerSecond * it.averageProcessingTime().toMillis() /
+            rateLimiterWindow.toMillis()
+        maxOf(it.queueCapacity().toLong(), throughputCapacity)
+    }.toInt()
+    private val rateLimiter = LeakingBucketRateLimiter(
+        rateLimitPerSecond,
+        rateLimiterWindow,
+    )
 
     private val paymentExecutor by lazy {
-        require(paymentAccounts.isNotEmpty()) { "At least one payment account is required" }
-
-        val accountThroughput = paymentAccounts.minOf { it.throughputPerSec() }
-        val workersAmount = minOf(
-            paymentAccounts.minOf { it.parallelRequests() },
-            ((accountThroughput * processingTimeMs + 999) / 1_000).toInt()
-        ).coerceAtLeast(1)
-        val executorThroughput = workersAmount * 1_000.0 / processingTimeMs
-        val effectiveThroughput = minOf(accountThroughput.toDouble(), executorThroughput)
-        val queueCapacity = ((effectiveThroughput * processingTimeMs + 999) / 1_000)
-            .toInt()
-            .coerceAtLeast(1)
-
         ThreadPoolExecutor(
             workersAmount,
             workersAmount,
@@ -83,10 +87,14 @@ class OrderPayer(
 
     fun processPayment(orderId: UUID, amount: Int, paymentId: UUID, deadline: Long): Long? {
         val createdAt = System.currentTimeMillis()
-        if (deadline - createdAt <= processingTimeMs) return null
+        if (deadline - createdAt <= averageProcessingTimeMs) return null
 
         val admissionSample = Timer.start(meterRegistry)
         try {
+            if (!rateLimiter.tick(bucketSizeFor(deadline - createdAt))) {
+                admissionRejected.increment()
+                return null
+            }
             paymentExecutor.submit {
                 admissionStarted.increment()
                 val createdEvent = paymentESService.create {
@@ -108,5 +116,13 @@ class OrderPayer(
             admissionSample.stop(admissionWait)
         }
         return createdAt
+    }
+
+    fun retryAfterMillis(): Long = rateLimiter.windowMillis
+
+    private fun bucketSizeFor(remainingTimeMs: Long): Int {
+        val waitingTimeMs = (remainingTimeMs - averageProcessingTimeMs).coerceAtLeast(0)
+        val calculatedSize = rateLimitPerSecond * waitingTimeMs / rateLimiter.windowMillis
+        return calculatedSize.coerceAtLeast(1).toInt()
     }
 }
