@@ -3627,7 +3627,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "histogram_quantile(0.95, sum by (le, account) (rate(payments_external_semaphore_wait_seconds_bucket[1m])))",
+              "expr": "payments_external_semaphore_wait_seconds{quantile=\"0.95\"}",
               "legendFormat": "p95 semaphore wait {{account}}",
               "range": true,
               "refId": "A"
@@ -3787,6 +3787,259 @@
       ],
       "title": "Payment Admission",
       "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 600,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 0,
+              "min": 0,
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 58
+          },
+          "id": 601,
+          "options": {
+            "graphMode": "none",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "values": false
+            },
+            "textMode": "value_and_name"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
+              "editorMode": "code",
+              "expr": "sum by (service, account) (increase(payments_provider_retries_total{service=~\"$service\",account=~\"${account:regex}\"}[$__range]))",
+              "instant": true,
+              "legendFormat": "{{account}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Retries in selected range",
+          "description": "Retry HTTP attempts that actually reached the provider. Retries that expired in the queue are not counted.",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 0,
+              "min": 0,
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 58
+          },
+          "id": 602,
+          "options": {
+            "graphMode": "none",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "values": false
+            },
+            "textMode": "value_and_name"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
+              "editorMode": "code",
+              "expr": "sum by (service, account) (increase(payments_provider_retry_outcomes_total{service=~\"$service\",account=~\"${account:regex}\",outcome=\"success\"}[$__range]))",
+              "instant": true,
+              "legendFormat": "{{account}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Retries that succeeded",
+          "description": "Retry attempts that received a successful payment result. A growing value proves that retries recover payments.",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 2,
+              "max": 1,
+              "min": 0,
+              "unit": "percentunit"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 58
+          },
+          "id": 603,
+          "options": {
+            "graphMode": "none",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "values": false
+            },
+            "textMode": "value_and_name"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
+              "editorMode": "code",
+              "expr": "sum by (service, account) (increase(payments_provider_retry_outcomes_total{service=~\"$service\",account=~\"${account:regex}\",outcome=\"success\"}[$__range])) / sum by (service, account) (increase(payments_provider_retry_outcomes_total{service=~\"$service\",account=~\"${account:regex}\"}[$__range]))",
+              "instant": true,
+              "legendFormat": "{{account}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Retry success rate",
+          "description": "Share of retry attempts that ended with a successful payment result.",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "unit": "reqps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 66
+          },
+          "id": 604,
+          "options": {
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
+              "editorMode": "code",
+              "expr": "sum by (account, outcome) (rate(payments_provider_retry_outcomes_total{service=~\"$service\",account=~\"${account:regex}\"}[$__rate_interval]))",
+              "legendFormat": "{{account}} · {{outcome}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Retry outcomes per second",
+          "description": "Retries split by result. Provider timeouts should be followed by successful retries while the deadline still allows another attempt.",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "unit": "reqps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 66
+          },
+          "id": 605,
+          "options": {
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
+              "editorMode": "code",
+              "expr": "sum by (account, outcome) (rate(payments_provider_attempts_total{service=~\"$service\",account=~\"${account:regex}\"}[$__rate_interval]))",
+              "legendFormat": "{{account}} · {{outcome}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Provider attempts by outcome per second",
+          "description": "All HTTP attempts, not only retries. A provider_timeout spike followed by success shows the retry path doing its job.",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Payment Provider Retries",
+      "type": "row"
     }
   ],
   "preload": false,
@@ -3815,6 +4068,35 @@
         },
         "refresh": 1,
         "regex": "",
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(payments_external_parallel_limit{service=~\"$service\"}, account)",
+        "includeAll": true,
+        "label": "account",
+        "multi": true,
+        "name": "account",
+        "options": [],
+        "query": {
+          "query": "label_values(payments_external_parallel_limit{service=~\"$service\"}, account)",
+          "refId": "AccountVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
         "type": "query"
       }
     ]
