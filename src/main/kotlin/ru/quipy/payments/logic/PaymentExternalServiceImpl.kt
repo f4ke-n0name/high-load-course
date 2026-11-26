@@ -99,6 +99,7 @@ class PaymentExternalSystemAdapterImpl(
         val response = try {
             callProvider(paymentId, transactionId, amount, latestStart, isRetry, transmission)
         } catch (e: Exception) {
+            metrics.responseReceived(false)
             val timedOut = isPaymentRequestTimeout(e)
             val reason = when (e) {
                 is InterruptedException -> "Payment submission interrupted."
@@ -191,7 +192,7 @@ class PaymentExternalSystemAdapterImpl(
             val call = client.newCall(request)
             call.timeout().timeout(timeoutPolicy.callMillis, TimeUnit.MILLISECONDS)
 
-            val attemptStartedAt = metrics.startHttpAttempt(isRetry)
+            metrics.startHttpAttempt(isRetry)
             var outcome = "error"
             try {
                 return call.execute().use { httpResponse ->
@@ -213,7 +214,7 @@ class PaymentExternalSystemAdapterImpl(
                 outcome = if (isPaymentRequestTimeout(e)) "client_timeout" else "error"
                 throw e
             } finally {
-                metrics.finishHttpAttempt(attemptStartedAt, outcome)
+                metrics.finishHttpAttempt(outcome, isRetry)
             }
         } finally {
             concurrentRequests.semaphore.release()

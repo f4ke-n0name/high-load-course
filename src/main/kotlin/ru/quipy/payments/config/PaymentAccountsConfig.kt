@@ -73,7 +73,6 @@ class PaymentAccountsConfig {
                         serviceName,
                         it.accountName,
                         it.parallelRequests,
-                        timeoutPolicy,
                         meterRegistry,
                     ),
                     timeoutPolicy,

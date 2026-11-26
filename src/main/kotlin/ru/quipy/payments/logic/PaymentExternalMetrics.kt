@@ -5,14 +5,12 @@ import io.micrometer.core.instrument.Gauge
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Tags
 import io.micrometer.core.instrument.Timer
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 class PaymentExternalMetrics(
     serviceName: String,
     accountName: String,
     parallelRequests: Int,
-    private val timeoutPolicy: PaymentTimeoutPolicy,
     private val meterRegistry: MeterRegistry,
 ) {
     private val inFlightRequests = AtomicInteger()
@@ -39,17 +37,29 @@ class PaymentExternalMetrics(
         .tags(tags)
         .register(meterRegistry)
 
-    private val requestDurationTimers = listOf(
+    private val retryOutcomes = listOf(
         "success",
         "failure",
         "provider_timeout",
         "client_timeout",
         "error",
     ).associateWith { outcome ->
-        Timer.builder("payments.provider.request.duration")
-            .description("Provider HTTP attempt duration including response reading and decoding")
+        Counter.builder("payments.provider.retry.outcomes")
+            .description("Outcome of provider HTTP attempts that were retries")
             .tags(tags.and("outcome", outcome))
-            .publishPercentiles(0.5, 0.9, 0.95, 0.99)
+            .register(meterRegistry)
+    }
+
+    private val attemptOutcomes = listOf(
+        "success",
+        "failure",
+        "provider_timeout",
+        "client_timeout",
+        "error",
+    ).associateWith { outcome ->
+        Counter.builder("payments.provider.attempts")
+            .description("Provider HTTP attempts by outcome")
+            .tags(tags.and("outcome", outcome))
             .register(meterRegistry)
     }
 
@@ -60,16 +70,6 @@ class PaymentExternalMetrics(
         Gauge.builder("payments.external.parallel.limit") { parallelRequests.toDouble() }
             .tags(tags)
             .register(meterRegistry)
-        Gauge.builder("payments.provider.timeout.seconds", timeoutPolicy) { it.serverMillis / 1_000.0 }
-            .description("Configured per-attempt provider timeout in seconds")
-            .tags(tags.and("source", "provider"))
-            .strongReference(true)
-            .register(meterRegistry)
-        Gauge.builder("payments.provider.timeout.seconds", timeoutPolicy) { it.callMillis / 1_000.0 }
-            .description("Configured per-attempt client call timeout in seconds")
-            .tags(tags.and("source", "client"))
-            .strongReference(true)
-            .register(meterRegistry)
     }
 
     fun startSemaphoreWait(): Timer.Sample = Timer.start(meterRegistry)
@@ -78,16 +78,19 @@ class PaymentExternalMetrics(
         sample.stop(semaphoreWaitTimer)
     }
 
-    fun startHttpAttempt(isRetry: Boolean): Long {
+    fun startHttpAttempt(isRetry: Boolean) {
         if (isRetry) providerRetries.increment()
         inFlightRequests.incrementAndGet()
-        return System.nanoTime()
     }
 
-    fun finishHttpAttempt(startedAtNanos: Long, outcome: String) {
+    fun finishHttpAttempt(outcome: String, isRetry: Boolean) {
         inFlightRequests.decrementAndGet()
-        val timer = requestDurationTimers[outcome] ?: requestDurationTimers.getValue("error")
-        timer.record(System.nanoTime() - startedAtNanos, TimeUnit.NANOSECONDS)
+        val attemptOutcome = attemptOutcomes[outcome] ?: attemptOutcomes.getValue("error")
+        attemptOutcome.increment()
+        if (isRetry) {
+            val retryOutcome = retryOutcomes[outcome] ?: retryOutcomes.getValue("error")
+            retryOutcome.increment()
+        }
     }
 
     fun responseReceived(success: Boolean) {
